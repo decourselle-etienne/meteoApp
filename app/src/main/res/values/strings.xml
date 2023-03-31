@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">meteoApplication</string>
+    <string name="app_name">Cloudy</string>
+    <string name="click_me">Click me !</string>
+    <string name="longitude">Longitude :</string>
+    <string name="latitude">Latitude :</string>
+    <string name="_0_0">0.0</string>
+    <string name="_44_84">44.84</string>
+    <string name="_0_58">-0.58</string>
+    <string name="logo">logo</string>
+    <string name="indice_uv">Indice UV</string>
+    <string name="_10">10</string>
 </resources>

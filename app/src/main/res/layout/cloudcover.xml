@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    >
+
+    <LinearLayout
+        android:id="@+id/cloudcoverLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cloudcover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Couverture nuageuse"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/cloudcover_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/meteo_infos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/cloudcover_progessStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:textSize="20dp"
+                />
+
+            <ProgressBar
+                android:id="@+id/cloudcover_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="visible"
+                android:progress="25"
+                android:progressBackgroundTint="@color/secondary_orange"
+                />
+
+            <TextView
+                android:id="@+id/cloudcover_progressEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:textSize="20dp"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/cloudcover_valeur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25%"
+            android:textColor="@color/principal_orange"
+            android:layout_marginBottom="10dp"
+            android:textSize="25dp"
+            />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
