@@ -3,11 +3,13 @@ package com.example.meteoapplication.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.location.*
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +26,7 @@ import com.example.meteoapplication.models.Weather
 import com.example.meteoapplication.repository.WeatherCityRepository
 import com.example.meteoapplication.viewModel.MainViewModel
 import kotlinx.coroutines.*
+import java.io.File
 import java.util.*
 
 
@@ -41,6 +44,7 @@ class MainActivity  : AppCompatActivity() {
     private val REQUEST_CODE_UPDATE_LOCATION = 42
 
 
+
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     fun getCity(latitude: Double, longitude:Double) {
         Locale.setDefault(Locale.FRENCH)
@@ -49,8 +53,8 @@ class MainActivity  : AppCompatActivity() {
         //getFromLocation(latitude, longitude, 1, GeocodeListener { addresses: MutableList<Address> ->  })
 
         if (allAddresses!!.size > 0) {
-            println(allAddresses!![0].locality)
-            city = allAddresses!![0].locality
+            println(allAddresses[0].locality)
+            city = allAddresses[0].locality
         } else {
         }
 
@@ -77,6 +81,7 @@ class MainActivity  : AppCompatActivity() {
                     println("Votre ville $city")
                     searchWeather(viewModel, latitude, longitude)
                     setCityText(city)
+                    binding.loaderGif.gifLayout.visibility = View.GONE
                 }
 
                 @Deprecated("Deprecated in Java")
@@ -106,6 +111,8 @@ class MainActivity  : AppCompatActivity() {
         }
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         setSupportActionBar(findViewById(R.id.my_toolbar))
@@ -126,12 +133,22 @@ class MainActivity  : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
 
+        val button = binding.myToolbar.menuButton
+
+        button.setOnClickListener {
+        var intent = Intent(applicationContext, DailyPrevisionsActivity::class.java)
+            println("content = $content")
+//            intent.putExtra("content", "content")
+        startActivity(intent)
+        }
         setContentView(view)
     }
 
+
+
     private fun searchWeather(viewModel: ViewModel, latitude: Double, longitude: Double) {
         GlobalScope.launch(Dispatchers.IO) {
-            val response = ApiClient.apiService.getWeather(latitude, longitude)
+            val response = ApiClient.apiService(this@MainActivity).getWeather(latitude, longitude)
             withContext(Dispatchers.Main) {
                 try {
                     if (response.isSuccessful && response.body() != null) {

@@ -33,13 +33,20 @@
             android:layout_gravity="center"
             />
 
-        <ImageView
+
+        <ImageButton
+            android:id="@+id/menu_button"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/menu_icon"
-            android:contentDescription="@string/logo"
-            android:layout_gravity="right"
+            android:src="@drawable/seven"
+            android:contentDescription="@string/menu_icon"
+            android:scaleType="fitXY"
+            android:background="@color/principal_blue"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
             />
+
+
 
     </Toolbar>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,136 +9,158 @@
     tools:context=".ui.MainActivity"
     android:layout_gravity="center">
 
-    <include
-        layout="@layout/header"
-        android:id="@+id/my_toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-
-        />
-
-    <TextView
-        android:id="@+id/ville_choisie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bordeaux"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/principal_blue"
-        android:fontFamily="sans-serif-black"
-        app:layout_constraintTop_toBottomOf="@id/my_toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="35dp"
-        />
-
-    <LinearLayout
-        android:id="@+id/meteo_infos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ville_choisie"
+        android:layout_height="match_parent"
         android:gravity="center"
         >
 
-        <ImageView
-            android:id="@+id/current_meteo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="30dp"
-            android:src="@drawable/logo_principal_blue"
-            android:contentDescription="logo" />
-
         <LinearLayout
-            android:id="@+id/meteo_degrees"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
+            android:gravity="center"
             >
+
+            <include
+                layout="@layout/header"
+                android:id="@+id/my_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+
+                />
+
             <TextView
-                android:id="@+id/temperature_reelle"
+                android:id="@+id/ville_choisie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="--°C"
+                android:text="Bordeaux"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/principal_blue"
                 android:fontFamily="sans-serif-black"
-                android:textSize="40sp"
+                app:layout_constraintTop_toBottomOf="@id/my_toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="35dp"
                 />
 
-            <TextView
-                android:id="@+id/temperature_ressentie"
+            <LinearLayout
+                android:id="@+id/meteo_infos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ville_choisie"
+                android:gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/current_meteo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="30dp"
+                    android:src="@drawable/logo_principal_blue"
+                    android:contentDescription="logo" />
+
+                <LinearLayout
+                    android:id="@+id/meteo_degrees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:id="@+id/temperature_reelle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--°C"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="40sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/temperature_ressentie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ressentie --°C"
+                        android:fontFamily="sans-serif"
+                        android:textSize="20sp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <include
+                layout="@layout/precipitations"
+                android:id="@+id/progressBarLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ressentie --°C"
-                android:fontFamily="sans-serif"
-                android:textSize="20sp"
+                android:layout_weight="2"
+                android:layout_marginTop="20dp"
+
+                app:layout_constraintTop_toBottomOf="@id/meteo_infos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+            />
+            <include
+                layout="@layout/cloudcover"
+                android:id="@+id/cloudcoverLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginTop="20dp"
+
+                app:layout_constraintTop_toBottomOf="@id/progressBarLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
-    </LinearLayout>
+            <include
+                layout="@layout/uv"
+                android:id="@+id/uvIndexLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginTop="20dp"
 
-</LinearLayout>
+                app:layout_constraintStart_toStartOf="@id/cloudcoverLayout"
+                app:layout_constraintTop_toBottomOf="@id/cloudcoverLayout"/>
+            />
 
+            <TextView
+                android:id="@+id/day_prevision"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prévisions du jour"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@id/uvIndexLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
 
-    <include
-        layout="@layout/precipitations"
-        android:id="@+id/progressBarLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:layout_marginTop="20dp"
+            <include
+                layout="@layout/daily"
+                android:id="@+id/dailyLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                app:layout_constraintTop_toBottomOf="@id/day_prevision"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        </LinearLayout>
 
-        app:layout_constraintTop_toBottomOf="@id/meteo_infos"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-    />
-    <include
-        layout="@layout/cloudcover"
-        android:id="@+id/cloudcoverLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:layout_marginTop="20dp"
-
-        app:layout_constraintTop_toBottomOf="@id/progressBarLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <include
-        layout="@layout/uv"
-        android:id="@+id/uvIndexLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:layout_marginTop="20dp"
-
-        app:layout_constraintStart_toStartOf="@id/cloudcoverLayout"
-        app:layout_constraintTop_toBottomOf="@id/cloudcoverLayout"/>
-    />
-
-    <TextView
-        android:id="@+id/day_prevision"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prévisions du jour"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/uvIndexLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <include
-        layout="@layout/daily"
-        android:id="@+id/dailyLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        app:layout_constraintTop_toBottomOf="@id/day_prevision"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        <include
+            layout="@layout/loader"
+            android:id="@+id/loader_gif"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            />
 
 
-
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

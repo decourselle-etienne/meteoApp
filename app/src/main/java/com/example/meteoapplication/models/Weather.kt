@@ -1,6 +1,6 @@
 package com.example.meteoapplication.models
 
-data class Weather(
+data class Weather (
     var latitude: Double,
     var longitude: Double,
     var generationTime : Float,
@@ -13,4 +13,4 @@ data class Weather(
     var hourly: Hourly,
     var daily_units: DailyUnits,
     var daily: Days
-)
+) : java.io.Serializable
